@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_app/features/home/bloc/home_bloc.dart';
 
-import 'features/home/view/home_view.dart';
+import 'features/home/presentation/pages/home_view.dart';
+import 'features/home/presentation/bloc/home_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ],
       child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Material App',
         home: HomeView(),
       ),

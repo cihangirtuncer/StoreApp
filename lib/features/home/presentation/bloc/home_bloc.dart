@@ -2,9 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:store_app/core/constants/api_constants.dart';
-import 'package:store_app/features/home/view_model/home_view_model.dart';
+import 'package:store_app/features/home/data/model/product_model.dart';
+import 'package:store_app/features/home/data/datasources/home_datasources.dart';
 
-import '../model/product_model.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';

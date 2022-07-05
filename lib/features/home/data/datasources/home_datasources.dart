@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:store_app/core/constants/api_constants.dart';
-import 'package:store_app/features/home/model/product_model.dart';
+
+import '../model/product_model.dart';
 
 abstract class IHomeService {
   late final Dio _dio;

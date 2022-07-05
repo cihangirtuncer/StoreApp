@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:store_app/features/home/presentation/bloc/home_bloc.dart';
+import 'package:store_app/features/home/presentation/widgets/home_detail_title_widget.dart';
 
 class HomeDetailView extends StatefulWidget {
   final HomeLoaded state;
@@ -22,9 +23,8 @@ class _HomeDetailViewState extends State<HomeDetailView> {
          onTap: (){
           Navigator.pop(context);
          },
-          child: Icon(CupertinoIcons.back)),
+          child: Icon(CupertinoIcons.back, color: Colors.black, size: 30,)),
       ),
-      backgroundColor: Colors.amber[100],
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -44,31 +44,30 @@ class _HomeDetailViewState extends State<HomeDetailView> {
           Expanded(
             flex: 6,
             child: Container(
+              height: 500,
+              width: 500,
+             decoration: BoxDecoration(
+              color: Colors.amber[100],
+              borderRadius:const BorderRadius.only(
+                    topLeft: Radius.circular(50),
+                    topRight: Radius.circular(50),
+                  ),
+             ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.fromLTRB(8, 30, 8, 8),
                     child: Text(
                       "Price: £${widget.state.products?[widget.index].price}",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Title: ${widget.state.products?[widget.index].title}",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Description: ${widget.state.products?[widget.index].description}",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ),
+                  HomeDetailTitleWidget(stateName: widget.state.products![widget.index].title.toString(),  title: "Title"),
+
+              
+                  HomeDetailTitleWidget(stateName: widget.state.products![widget.index].description.toString(), title: "Description")
                 ],
               ),
             ),

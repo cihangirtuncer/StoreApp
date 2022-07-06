@@ -21,17 +21,15 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.amber[100],
+          centerTitle: true,
           title: const Text(
-            "Store",
-            style: TextStyle(color: Colors.black),
+            "Jungle Store",
           ),
         ),
-        backgroundColor: Colors.amber[100],
         body: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             if (state is HomeLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child:  CircularProgressIndicator());
             }
 
             if (state is HomeFailed) {
@@ -84,7 +82,7 @@ class _HomeViewState extends State<HomeView> {
                     ),
                     Expanded(
                       flex: 5,
-                      child: Image.network("${state.products?[index].image}"),
+                      child:  Image.network("${state.products?[index].image}"),
                     ),
                     Expanded(
                       flex: 3,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../bloc/home_bloc.dart';
 
@@ -10,14 +11,14 @@ class HomeDetailTitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding:  EdgeInsets.fromLTRB(17.w, 17.h, 17.w, 17.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                         Text("$title:",
+                         Text(title,
                         style:const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                         Text(
-                          " ${stateName}",
+                          stateName,
                           style: const TextStyle(fontSize: 20),
                         ),
                       ],

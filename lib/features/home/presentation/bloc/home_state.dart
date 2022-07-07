@@ -12,7 +12,7 @@ class HomeLoading extends HomeState {}
 class HomeFailed extends HomeState {}
 
 class HomeLoaded extends HomeState {
-   final List<Products>? products;
+  final List<Products>? products;
   const HomeLoaded({this.products});
   @override
   List<Object?> get props => [products];

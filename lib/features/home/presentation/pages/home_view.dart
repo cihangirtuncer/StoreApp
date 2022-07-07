@@ -1,5 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:store_app/features/home/presentation/bloc/home_bloc.dart';
 import 'package:store_app/features/home/presentation/pages/home_detail_view.dart';
 
@@ -29,7 +31,7 @@ class _HomeViewState extends State<HomeView> {
         body: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             if (state is HomeLoading) {
-              return const Center(child:  CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
 
             if (state is HomeFailed) {
@@ -39,7 +41,7 @@ class _HomeViewState extends State<HomeView> {
             }
 
             if (state is HomeLoaded) {
-              return  buildBody(state);
+              return buildBody(state);
             } else {
               return const Text("Some Error");
             }
@@ -56,7 +58,9 @@ class _HomeViewState extends State<HomeView> {
         itemBuilder: (BuildContext context, int index) {
           return InkWell(
             onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=> HomeDetailView(state: state, index: index)));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      HomeDetailView(state: state, index: index)));
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -75,18 +79,20 @@ class _HomeViewState extends State<HomeView> {
                       children: [
                         Text(
                           "£${state.products?[index].price}",
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
                     Expanded(
                       flex: 5,
-                      child:  Image.network("${state.products?[index].image}"),
+                      child: Image.network("${state.products?[index].image}"),
                     ),
                     Expanded(
                       flex: 3,
-                      child: Text("${state.products?[index].title}"),
+                      child: AutoSizeText(
+                        "${state.products?[index].title}",
+                        maxLines: 2,
+                      ),
                     ),
                   ],
                 ),
